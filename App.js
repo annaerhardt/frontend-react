@@ -5,14 +5,14 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/data')
+    fetch(process.env.REACT_APP_API_URL || 'http://localhost:5000/api/data')
       .then(res => res.json())
       .then(setData);
   }, []);
 
   return (
     <div>
-      <h1>Välkommen till min React-app</h1>
+      <h1>React-frontend</h1>
       <pre>{data ? JSON.stringify(data, null, 2) : "Laddar data..."}</pre>
     </div>
   );
